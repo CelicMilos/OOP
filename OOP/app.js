@@ -86,6 +86,7 @@ function Dragon(life, name, level, color, spell) {
   this.color = color;
   this.spell = spell;
 }
+Dragon.prototype = Object.create(Enemy.prototype);
 Dragon.prototype.fireBreath = function () {
   console.log(`FIIIRREEEE!!`);
 };
