@@ -59,3 +59,39 @@ console.log(book6);
 console.log(book8);
 book7.getAuthor();
 book5.getAuthor();
+
+// Prototypal Inheritence
+
+function Enemy(life, name, level) {
+  this.life = life;
+  this.name = name;
+  this.level = level;
+}
+
+Enemy.prototype.getInfo = function () {
+  console.log(this.life, this.name, this.level);
+};
+
+Enemy.prototype.attack = function () {
+  console.log(`${this.name} has attacked!`);
+};
+Enemy.prototype.block = function () {
+  console.log(`${this.name} has blocked!`);
+};
+
+function Dragon(life, name, level, color, spell) {
+  Enemy.call(this, life, name, level);
+  // Pozivaju se paramentri CF Enemy i keyword this ali u kontekstu CF Dragon
+  // a dodoatni parametri se mogu definisati(color,spell) se mogu definisati normalno.
+  this.color = color;
+  this.spell = spell;
+}
+Dragon.prototype.fireBreath = function () {
+  console.log(`FIIIRREEEE!!`);
+};
+
+const newDragon = new Dragon(75, "Blacktongue", 30, "green", "fire");
+console.log(newDragon);
+newDragon.fireBreath();
+
+
