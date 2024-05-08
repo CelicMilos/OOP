@@ -95,4 +95,30 @@ const newDragon = new Dragon(75, "Blacktongue", 30, "green", "fire");
 console.log(newDragon);
 newDragon.fireBreath();
 
+class Animator {
+  constructor(selector) {
+    this.selector = document.querySelector(selector);
+    this.isWhite = true;
+  }
+  toggleBackground(time) {
+    this.selector.style.transition = `all ${time}s ease`;
+    if (this.isWhite) {
+      this.selector.style.backgroundColor = "rgb(63, 100, 100)";
+      this.selector.style.color = "rgb(201, 235, 233)";
+      button.style.backgroundColor = "rgb(201, 235, 233)";
+      button.style.color = "rgb(63, 100, 100)";
+    } else {
+      this.selector.style.backgroundColor = "white";
+      this.selector.style.color = "rgb(63, 100, 100)";
+      button.style.backgroundColor = "rgb(63, 100, 100)";
+      button.style.color = "rgb(201, 235, 233)";
+    }
+    this.isWhite = !this.isWhite;
+  }
+}
+const intro = new Animator(".body");
+const button = document.querySelector("button");
+button.addEventListener("click", function () {
+  intro.toggleBackground(1);
+});
 
